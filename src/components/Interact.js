@@ -1,18 +1,32 @@
-import React, { useContext, useRef } from 'react'
-import GlobalContext from '../store/GlobalContext'
+import React, { useContext, useRef } from "react";
+import GlobalContext from "../store/GlobalContext";
 
 const Interact = () => {
-    const nameRef = useRef()
-    const itemRef = useRef()
+  const nameRef = useRef();
+  const itemRef = useRef();
 
-    const {state, dispatch} = useContext(GlobalContext)
+  const { state, dispatch } = useContext(GlobalContext);
 
-    const changeName = (e) => {
-        e.preventDefault()
-        dispatch({type: "CHANGENAME", payload: nameRef.current.value })
-        nameRef.current.value = ""
-        nameRef.current.focus()
-    }
+  const changeName = (e) => {
+    e.preventDefault();
+    dispatch({ type: "CHANGENAME", payload: nameRef.current.value });
+    nameRef.current.value = "";
+    nameRef.current.focus();
+  };
+
+  const increase = () => {
+    dispatch({ type: "INCREASE" });
+  };
+  const decrease = () => {
+    dispatch({ type: "DECREASE" });
+  };
+
+  const addToList = (e) => {
+    e.preventDefault();
+    dispatch({ type: "ADDTOLIST", payload: itemRef.current.value });
+    itemRef.current.value = "";
+    itemRef.current.focus();
+  };
 
   return (
     <div className="card">
@@ -22,15 +36,15 @@ const Interact = () => {
         <input type="text" ref={nameRef} />
         <button>Change it!</button>
       </form>
-      <form>
+      <form onSubmit={addToList}>
         <h3>Add to list</h3>
         <input type="text" ref={itemRef} />
         <button>Add</button>
       </form>
-      <button>+ count</button>
-      <button>- count</button>
+      <button onClick={increase}>+ count</button>
+      <button onClick={decrease}>- count</button>
     </div>
   );
-}
+};
 
-export default Interact
+export default Interact;
