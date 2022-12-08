@@ -11,7 +11,9 @@ const StateComponent = () => {
   };
   return (
     <div className="card">
-      <h2>useState()</h2>
+      <a href="https://beta.reactjs.org/apis/react/useState" target="_blank">
+        <h2>useState()</h2>
+      </a>
       <h3>State: {userInput}</h3>
       <input
         type="text"

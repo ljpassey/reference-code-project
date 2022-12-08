@@ -1,15 +1,20 @@
+import "./App.css";
+import Header from "./components/Header";
+import { Routes, Route } from "react-router-dom";
+import HomeScreen from "./screens/HomeScreen";
+import ReferenceScreen from "./screens/ReferenceScreen";
+import DetailScreen from "./screens/DetailScreen";
 
-import './App.css';
-import Header from './components/Header';
-import StateComponent from './components/StateComponent';
-import EffectComponent from './components/EffectComponent';
 
 function App() {
   return (
-    <div className="App col-container" >
+    <div className="App col-container">
       <Header />
-      <StateComponent />
-      <EffectComponent />
+      <Routes>
+        <Route  path="/" element={<HomeScreen />} />
+        <Route  path="/reference" element={<ReferenceScreen />} />
+        <Route  path="/details/:id" element={<DetailScreen />} />
+      </Routes>
     </div>
   );
 }

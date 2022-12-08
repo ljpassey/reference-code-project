@@ -30,12 +30,29 @@ const EffectComponent = () => {
   };
 
   useEffect(() => {
-    getData()
-  }, [])
+    getData();
+  }, []);
   return (
     <div className="card">
-      <h2>useEffect()</h2>
-      <h3>Name: {data.name}</h3>
+      <a href="https://beta.reactjs.org/apis/react/useEffect" target="_blank">
+        <h2>useEffect()</h2>
+      </a>
+      <h4>
+        Useful for things like: Connecting to a chat server, listening to a
+        global browser event, triggering an animation, controlling a modal
+        dialogue, or tracking element visibility.
+      </h4>
+      <h3>Name: "{data.name}" pulled from SWAPI via axios</h3>
+      <p>You need to pass two arguments to useEffect: </p>
+      <p>
+        1. A setup function with setup code that connects to that system. It
+        should return a cleanup function with cleanup code that disconnects from
+        that system.
+      </p>
+      <p>
+        2. A list of dependencies including every value from your component used
+        inside of those functions.
+      </p>
     </div>
   );
 };
